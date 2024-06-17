@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=500">
+  <title>Trackpad</title>
+  <link rel="stylesheet" href="remote.css">
+</head>
+<body>
+  <input type="text" id="textfield" placeholder=" search"><br><br>
+  <div id="rectangle"></div><br>
+  <img width="360" src="images/buttons.png" usemap="#image-map">
+
+  <map name="image-map">
+    <area target="" alt="Up" title="Up" onclick="up()" coords="126,3,236,102" shape="rect">
+    <area target="" alt="Down" title="Down" onclick="down()" coords="232,313,129,210" shape="rect">
+    <area target="" alt="Right" title="Right" onclick="right()" coords="235,101,339,208" shape="rect">
+    <area target="" alt="Left" title="Left" onclick="left()" coords="20,104,125,208" shape="rect">
+    <area target="" alt="Back" title="Back" onclick="escape()" coords="22,344,124,446" shape="rect">
+    <area target="" alt="Home" title="Home" onclick="home()" coords="126,340,239,445" shape="rect">
+    <area target="" alt="Command" title="Command" onclick="command()" coords="341,442,242,344" shape="rect">
+    <area target="" alt="OK" title="OK" onclick="enter()" coords="126,102,234,210" shape="rect">
+  </map>
+</body>
+<script src="js/socket.io-1.0.0.js"></script>
+<script src="remote.js"></script>
+</html>

@@ -15,7 +15,7 @@ body {
     position: relative;
 }
 
-#white-rectangle {
+#field {
     width: calc(100% - 40px);
     height: calc(100% - 40px);
     background-color: white;
@@ -25,7 +25,7 @@ body {
     left: 20px;
 }
 
-#soccer-ball {
+#football {
     width: 300px;
     height: 300px;
     position: absolute;

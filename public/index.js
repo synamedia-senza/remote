@@ -20,21 +20,17 @@ let page = window.location.href;
 if (page.endsWith("html") || page.endsWith("/")) {
   page = page.substring(0, page.lastIndexOf('/'));
 }
-generateCode(page + "/remote.html?device=" + device, 200);
-
-const soccerBall = document.getElementById('soccer-ball');
-const whiteRectangle = document.getElementById('white-rectangle');
-let isDragging = false;
-let offsetX, offsetY;
+let remoteLink = page + "/remote.html?device=" + device;
+generateCode(remoteLink, 200);
+console.log("Remote link", remoteLink);
 
 center();
 
-whiteRectangle.addEventListener('mousedown', (event) => {
-  const rect = soccerBall.getBoundingClientRect();
-  offsetX = event.clientX - rect.left;
-  offsetY = event.clientY - rect.top;
+let isDragging = false;
+
+document.addEventListener('mousedown', (event) => {
   isDragging = true;
-  soccerBall.style.cursor = 'grabbing';
+  football.style.cursor = 'grabbing';
 });
 
 document.addEventListener('mousemove', mousemove);
@@ -42,33 +38,31 @@ socket.on('mousemove', mousemove);
 
 function mousemove(event) {
   if (isDragging || event.remote) {
-      const rect = whiteRectangle.getBoundingClientRect();
+      const rect = field.getBoundingClientRect();
       let scale = event.remote ? 4.0 : 1.0;
-      let newX = parseInt(soccerBall.style.left) + event.movementX * scale;
-      let newY = parseInt(soccerBall.style.top) + event.movementY * scale;
+      let newX = parseInt(football.style.left) + event.movementX * scale;
+      let newY = parseInt(football.style.top) + event.movementY * scale;
 
       // Constrain within the rectangle
-      newX = Math.max(150, Math.min(newX, rect.width - soccerBall.clientWidth + 150));
-      newY = Math.max(150, Math.min(newY, rect.height - soccerBall.clientHeight + 150));
+      newX = Math.max(150, Math.min(newX, rect.width - football.clientWidth + 150));
+      newY = Math.max(150, Math.min(newY, rect.height - football.clientHeight + 150));
 
-      soccerBall.style.left = `${newX}px`;
-      soccerBall.style.top = `${newY}px`;
+      football.style.left = `${newX}px`;
+      football.style.top = `${newY}px`;
   }
 }
 
 document.addEventListener('mouseup', () => {
-  if (isDragging) {
-    isDragging = false;
-    soccerBall.style.cursor = 'grab';
-  }
+  isDragging = false;
+  football.style.cursor = 'grab';
 });
 
 socket.on('keydown', keydown);
 document.addEventListener("keydown", keydown);
 
 function center() {
-  soccerBall.style.left = '950px';
-  soccerBall.style.top = '550px';
+  football.style.left = '950px';
+  football.style.top = '550px';
 }
 
 let up = (n) => mousemove({movementX: 0, movementY: -1 * n, remote: true});

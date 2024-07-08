@@ -29,5 +29,5 @@ In a separate terminal window or tab, start the Remote server. This will tell No
 
 ### Start page
 
-You can open the start page by going to [http://localhost:8080/](http://localhost:8080/) in your browser. Substitute the name of your computer to connect from other devices. 
+You can open the start page by going to [http://localhost:8080/](http://localhost:8080/) in your browser. Substitute the name of your computer to connect from other devices, or use ngrok to connect from the internet.
 

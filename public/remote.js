@@ -44,9 +44,9 @@ function mouseup(event) {
   }
 }
 
-rectangle.addEventListener('mousedown', mousedown);
-rectangle.addEventListener('mousemove', mousemove);
-rectangle.addEventListener('mouseup', mouseup);
+trackpad.addEventListener('mousedown', mousedown);
+trackpad.addEventListener('mousemove', mousemove);
+trackpad.addEventListener('mouseup', mouseup);
 document.addEventListener('mouseup', mouseup);
 
 /** Touch **/
@@ -74,13 +74,14 @@ function touchend(event) {
   sendMessage("mouseup", {clientX: touch.pageX, clientY: touch.pageY});
 }
 
-rectangle.addEventListener("touchstart", touchstart, false);
-rectangle.addEventListener("touchmove", touchmove, false);
-rectangle.addEventListener("touchend", touchend, false);
+trackpad.addEventListener("touchstart", touchstart, false);
+trackpad.addEventListener("touchmove", touchmove, false);
+trackpad.addEventListener("touchend", touchend, false);
 
 /** Keyboard **/
 
 let sendKey = (key) => sendMessage("keydown", {key});
+
 let left = () => sendKey("ArrowLeft");
 let right = () => sendKey("ArrowRight");
 let up = () => sendKey("ArrowUp");
